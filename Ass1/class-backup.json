@@ -1,0 +1,204 @@
+[{
+  "_id": 1,
+  "type": "music",
+  "schedule": "Wed 15:00",
+  "startDate": "2021-11-16",
+  "teacher": {
+    "teacher_id": 102,
+    "name": "Bauer Barlow",
+    "email": "bauerbarlow@email.com",
+    "phone": "902-123-4567",
+    "image": "https://randomuser.me/api/portraits/women/73.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1007,
+      "name": "Jimmie Ochoa",
+      "motherName": "Hinton Christian",
+      "phone": "354-239-8470",
+      "address": "9 Nichols Avenue, Moraida, Indiana"
+    },
+    {
+      "student_id": 1005,
+      "name": "Flowers Molina",
+      "motherName": "Pearlie Riddle",
+      "phone": "479-390-2590",
+      "address": "56 Lefferts Avenue, Bradenville, Rhode Island"
+    }
+  ]
+},{
+  "_id": 2,
+  "type": "censory",
+  "schedule": "Mon 14:30",
+  "startDate": "2022-03-05",
+  "teacher": {
+    "teacher_id": 101,
+    "name": "Meyers Moss",
+    "email": "meyersmoss@email.com",
+    "phone": "902-413-2456",
+    "image": "https://randomuser.me/api/portraits/women/90.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1011,
+      "name": "Bianca Rush",
+      "motherName": "Mcconnell Gentry",
+      "phone": "356-589-2097",
+      "address": "6 Debevoise Street, Loma, Alaska"
+    },
+    {
+      "student_id": 1008,
+      "name": "Dionne Barr",
+      "motherName": "Floyd Wilkinson",
+      "phone": "982-490-1903",
+      "address": "91 Campus Place, Choctaw, Minnesota"
+    }
+  ]
+},{
+  "_id": 3,
+  "type": "art",
+  "schedule": "Tue 15:30",
+  "startDate": "2022-07-17",
+  "teacher": {
+    "teacher_id": 103,
+    "name": "Angelia Sullivan",
+    "email": "angeliasullivan@email.com",
+    "phone": "902-511-2290",
+    "image": "https://randomuser.me/api/portraits/women/90.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1002,
+      "name": "Soto Dotson",
+      "motherName": "Doris Welch",
+      "phone": "346-259-3098",
+      "address": "7 Louisa Street, Richville, Montana"
+    },
+    {
+      "student_id": 1006,
+      "name": "Parsons Gould",
+      "motherName": "Valentine Peck",
+      "phone": "920-204-3890",
+      "address": "30 Bedell Lane, Ilchester, South Dakota"
+    },
+    {
+      "student_id": 1014,
+      "name": "Willie Watkins",
+      "motherName": "Millicent Holder",
+      "phone": "203-498-3502",
+      "address": "76 Bay Street, Linganore, Illinois"
+    }
+  ]
+},{
+  "_id": 4,
+  "type": "censory",
+  "schedule": "Fri 15:00",
+  "startDate": "2022-06-24",
+  "teacher": {
+    "teacher_id": 102,
+    "name": "Bauer Barlow",
+    "email": "bauerbarlow@email.com",
+    "phone": "902-123-4567",
+    "image": "https://randomuser.me/api/portraits/women/73.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1004,
+      "name": "Justice Hernandez",
+      "motherName": "Camille Rocha",
+      "phone": "234-710-9282",
+      "address": "61 Creamer Street, Remington, California"
+    },
+    {
+      "student_id": 1009,
+      "name": "Carpenter Rodriguez",
+      "motherName": "Hodges Myers",
+      "phone": "519-203-8740",
+      "address": "90 Henry Street, Glenville, Michigan"
+    }
+  ]
+},{
+  "_id": 5,
+  "type": "music",
+  "schedule": "Thu 14:00",
+  "startDate": "2022-05-29",
+  "teacher": {
+    "teacher_id": 101,
+    "name": "Meyers Moss",
+    "email": "meyersmoss@email.com",
+    "phone": "902-413-2456",
+    "image": "https://randomuser.me/api/portraits/women/90.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1013,
+      "name": "Gilbert Castaneda",
+      "motherName": "Diann Bender",
+      "phone": "409-827-3256",
+      "address": "61 Seba Avenue, Clarence, Puerto Rico"
+    },
+    {
+      "student_id": 1003,
+      "name": "Traci Cherry",
+      "motherName": "Peggy Lucas",
+      "phone": "340-892-7652",
+      "address": "12 Clarkson Avenue, Riner, Ohio"
+    }
+  ]
+},{
+  "_id": 6,
+  "type": "art",
+  "schedule": "Wed 14:30",
+  "startDate": "2022-07-09",
+  "teacher": {
+    "teacher_id": 103,
+    "name": "Angelia Sullivan",
+    "email": "angeliasullivan@email.com",
+    "phone": "902-511-2290",
+    "image": "https://randomuser.me/api/portraits/women/56.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1012,
+      "name": "Victoria Greene",
+      "motherName": "Alford Mccormick",
+      "phone": "234-870-9785",
+      "address": "45 Rogers Avenue, Newry, West Virginia"
+    },
+    {
+      "student_id": 1010,
+      "name": "Lacey Macdonald",
+      "motherName": "Letha Guerrero",
+      "phone": "403-981-2651",
+      "address": "17 Milton Street, Tuttle, Guam"
+    }
+  ]
+},{
+  "_id": 7,
+  "type": "censory",
+  "schedule": "Tue 14:30",
+  "startDate": "2022-01-18",
+  "teacher": {
+    "teacher_id": 102,
+    "name": "Bauer Barlow",
+    "email": "bauerbarlow@email.com",
+    "phone": "902-123-4567",
+    "image": "https://randomuser.me/api/portraits/women/73.jpg"
+  },
+  "student": [
+    {
+      "student_id": 1001,
+      "name": "Francisca Grant",
+      "motherName": "Petty Tillman",
+      "phone": "520-987-9533",
+      "address": "35 Louise Terrace, Lutsen, Indiana"
+    },
+    {
+      "student_id": 1015,
+      "name": "Bonnie Edwards",
+      "motherName": "Emerson Landry",
+      "phone": "907-257-3667",
+      "address": "43 Beadel Street, Orason, New Jersey"
+    }
+  ]
+}]
