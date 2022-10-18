@@ -4,6 +4,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require("mongoose");
+
+//load in any env variables from our .env file
+require("dotenv").config();
+
+// connect to our mongodb
+mongoose.connect(process.env.MONGO_DB);
 
 // import routers
 var indexRouter = require('./routes/index'); // index = index.js
@@ -26,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // direct the incoming request to a particular router
 // based on the url path
 app.use('/', indexRouter);
-app.use('/api/api', apiRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
