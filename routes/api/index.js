@@ -5,9 +5,12 @@ var router = express.Router()
 // SONGS
 var songsRouter = require('./songs')
 router.use('/songs', songsRouter)
-//USERS
+// USERS
 var usersRouter = require('./users')
 router.use('/users', usersRouter)
+// CLASSES
+var classesRouter = require('./classes')
+router.use('/classes', classesRouter)
 
 
 
