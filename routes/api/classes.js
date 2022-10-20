@@ -43,6 +43,9 @@ router.post("/", (req, res) => {
     // res.send(`CREATE SONGS ENDPOINT WAS REACHED`)
   
     Class.create(req.body, (err, savedClass) => {
+      if (err) {
+        return res.status(400).send(`Error: ${err.message}`);
+      }
       console.log(savedClass);
       res.status(201).send();
     });

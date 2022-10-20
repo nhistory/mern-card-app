@@ -16,6 +16,7 @@ router.use('/classes', classesRouter)
 
 // OUR WELCOME ENDPOINT
 router.get('/', (req, res)=>{
+    res.header("custom-header", "foo")
     res.send('Welcome to our API!!! :)')
 })
 
