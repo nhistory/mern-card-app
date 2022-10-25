@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 var validateToken = require('../../middleware/validateToken')
-router.use(validateToken)
+// router.use(validateToken)
 
 // import the Class model
 const Class = require("../../models/class");
@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 });
 
 // GET ONE CLASS BY ID
-router.get("/:id", (req, res) => {
+router.get("/:id", validateToken, (req, res) => {
     // res.send(`GET ONE SONGS ENDPOINT WAS REACHED and the ID is ${req.params.id}`)
   
     Class.findById(req.params.id, (err, oneClass) => {

@@ -106,7 +106,7 @@ router.post('/login', (req, res) => {
       const token = jwt.sign(
         {
           email: req.body.email,
-          password: req.body.password,
+          password: user.password,
         },
         process.env.SECRET
       );
