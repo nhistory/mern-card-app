@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
     }
 
     console.log(songs);
-    res.send("SONGS!!!!");
+    res.send(songs);
   });
 });
 

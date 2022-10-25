@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
+var validateToken = require('../../middleware/validateToken')
+router.use(validateToken)
+
 // import the Class model
 const Class = require("../../models/class");
 

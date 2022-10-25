@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+// var validateToken = require('../../middleware/validateToken')
 
 // DEFINE ANY SUB-ROUTERS OF OUR API
 // SONGS
@@ -10,6 +11,7 @@ var usersRouter = require('./users')
 router.use('/users', usersRouter)
 // CLASSES
 var classesRouter = require('./classes')
+// classesRouter.use(validateToken)
 router.use('/classes', classesRouter)
 
 
