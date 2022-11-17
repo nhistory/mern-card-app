@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
+var cors = require('cors');
 
 
 //load in any env variables from our .env file
@@ -25,6 +26,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors()); //allow access from anywhere
 app.use(logger('dev'));
 app.use(express.json()); // parses the body from the request
 app.use(express.urlencoded({ extended: false }));
