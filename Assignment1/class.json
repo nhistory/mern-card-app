@@ -1,6 +1,6 @@
 [
   {
-    "_id": 1,
+    "id": 1,
     "type": "music",
     "schedule": "Wed 15:00",
     "startDate": "2021-11-16",
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "_id": 2,
+    "id": 2,
     "type": "censory",
     "schedule": "Mon 14:30",
     "startDate": "2022-03-05",
@@ -58,7 +58,7 @@
     ]
   },
   {
-    "_id": 3,
+    "id": 3,
     "type": "art",
     "schedule": "Tue 15:30",
     "startDate": "2022-07-17",
@@ -67,7 +67,7 @@
       "name": "Angelia Sullivan",
       "email": "angeliasullivan@email.com",
       "phone": "902-511-2290",
-      "image": "https://randomuser.me/api/portraits/women/90.jpg"
+      "image": "https://randomuser.me/api/portraits/women/56.jpg"
     },
     "student": [
       {
@@ -94,7 +94,7 @@
     ]
   },
   {
-    "_id": 4,
+    "id": 4,
     "type": "censory",
     "schedule": "Fri 15:00",
     "startDate": "2022-06-24",
@@ -123,7 +123,7 @@
     ]
   },
   {
-    "_id": 5,
+    "id": 5,
     "type": "music",
     "schedule": "Thu 14:00",
     "startDate": "2022-05-29",
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "_id": 6,
+    "id": 6,
     "type": "art",
     "schedule": "Wed 14:30",
     "startDate": "2022-07-09",
@@ -181,7 +181,7 @@
     ]
   },
   {
-    "_id": 7,
+    "id": 7,
     "type": "censory",
     "schedule": "Tue 14:30",
     "startDate": "2022-01-18",

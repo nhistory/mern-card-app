@@ -3,41 +3,30 @@ import NavBar from './components/NavBar';
 import Main from './components/Main';
 import SignIn from './components/SignIn';
 import Footer from './components/Footer';
-import axios from 'axios';
 
 import './css/app.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-class App extends React.Component {
-
-  constructor(props){
-    super(props)
-
-    this.state = {
-      classes: []
-    }
-  }
-
-  componentDidMount(){
-    //call your api data here...fetch or axios
-    axios.get('http://localhost:5000/api/classes')
-        .then(response=>{
-          console.log(response.data)
-          this.setState({ classes: response.data })
-        })
-  }
-
-  render(){
-    return (
-      <React.Fragment>
+const App = () => {
+  return (
+    <React.Fragment>
+      <BrowserRouter>
         <NavBar />
         <div id="main-content">
-          {/* <SignIn /> */}
-          <Main classes={this.state.classes} />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
         <Footer />
-      </React.Fragment>
-    );
-  }
-}
+      </BrowserRouter>
+    </React.Fragment>
+  );
+};
+
+const NotFound = () => {
+  return <h1>Not found</h1>;
+};
 
 export default App;
