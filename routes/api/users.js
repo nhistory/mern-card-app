@@ -71,6 +71,16 @@ router.post('/register', (req, res) => {
       // If the user was successfully created.
       // generate a json web token send a response back to the client
 
+      const token = jwt.sign(
+        {
+          email: req.body.email,
+          password: req.password,
+        },
+        process.env.SECRET
+      );
+
+      res.set('x-auth-token', token);
+
       res.send({
         email: req.body.email,
         password: req.body.password,

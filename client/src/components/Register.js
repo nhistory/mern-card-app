@@ -3,10 +3,12 @@ import '../css/signin.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const SignIn = (props) => {
-  // localStorage.setItem('foo', 'bar');
+const Register = (props) => {
+  //localStorage.setItem('foo', 'bar');
 
   //define state in this component using HOOKS!
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,7 +21,9 @@ const SignIn = (props) => {
     //we will post the form data to the API authentication
     //fetch or axios
     axios
-      .post('http://localhost:5000/api/users/login', {
+      .post('http://localhost:5000/api/users/register', {
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: password,
       })
@@ -35,7 +39,32 @@ const SignIn = (props) => {
 
   return (
     <form className="form-signin" onSubmit={handleSubmit}>
-      <h1 className="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+      <h1 className="h3 mb-3 font-weight-normal text-center">Please sign up</h1>
+      <label htmlFor="inputEmail" className="sr-only">
+        First Name
+      </label>
+      <input
+        type="text"
+        id="inputFirstName"
+        name="firstName"
+        onChange={(e) => setFirstName(e.target.value)}
+        className="form-control"
+        placeholder="First Name"
+        required
+        autoFocus
+      />
+      <label htmlFor="inputEmail" className="sr-only">
+        Last Name
+      </label>
+      <input
+        type="text"
+        id="inputLastName"
+        name="lastName"
+        onChange={(e) => setLastName(e.target.value)}
+        className="form-control"
+        placeholder="Last Name"
+        required
+      />
       <label htmlFor="inputEmail" className="sr-only">
         Email address
       </label>
@@ -47,7 +76,6 @@ const SignIn = (props) => {
         className="form-control"
         placeholder="Email address"
         required
-        autoFocus
       />
       <label htmlFor="inputPassword" className="sr-only">
         Password
@@ -62,10 +90,10 @@ const SignIn = (props) => {
         required
       />
       <button className="btn btn-lg btn-primary btn-block" type="submit">
-        Sign in
+        Sign up
       </button>
     </form>
   );
 };
 
-export default SignIn;
+export default Register;
