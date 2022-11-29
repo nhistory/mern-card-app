@@ -11,6 +11,7 @@ var cors = require('cors');
 require('dotenv').config();
 
 // connect to our mongodb
+console.log(`MONGO_DB: ${process.env.MONGO_DB}`);
 mongoose.connect(process.env.MONGO_DB);
 
 // import routers
