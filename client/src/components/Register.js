@@ -21,7 +21,7 @@ const Register = (props) => {
     //we will post the form data to the API authentication
     //fetch or axios
     axios
-      .post('http://localhost:5000/api/users/register', {
+      .post(`${process.env.REACT_APP_API_URL}/users/register`, {
         firstName: firstName,
         lastName: lastName,
         email: email,

@@ -17,7 +17,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     //call your api data here...fetch or axios
-    axios.get('http://localhost:5000/api/classes').then((response) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/classes`).then((response) => {
       console.log(response.data);
       this.setState({ classes: response.data });
     });
