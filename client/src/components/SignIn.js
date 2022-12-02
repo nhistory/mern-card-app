@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../css/signin.css';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import authService from '../services/authService';
 
 const SignIn = (props) => {
   // localStorage.setItem('foo', 'bar');
@@ -16,21 +16,16 @@ const SignIn = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault(); //prevent the form from doing a browser submit
 
-    //we will post the form data to the API authentication
-    //fetch or axios
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/users/login`, {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          //there should be a token ... store it
-          localStorage.setItem('token', response.headers['x-auth-token']);
-          //now redirect to the main page with our data
+    authService.signin(
+      { email: email, password: password },
+      (signinSuccess) => {
+        if (signinSuccess) {
           navigate('/');
+        } else {
+          console.log('UNSUCCESSFUL LOGIN');
         }
-      });
+      }
+    );
   };
 
   return (

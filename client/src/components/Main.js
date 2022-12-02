@@ -1,9 +1,8 @@
 import React from 'react';
 import Card from './Card';
 import '../css/main.css';
-import axios from 'axios';
-
 import 'font-awesome/css/font-awesome.min.css';
+import dataService from '../services/dataService';
 
 class Main extends React.Component {
   //define our state
@@ -16,10 +15,8 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    //call your api data here...fetch or axios
-    axios.get(`${process.env.REACT_APP_API_URL}/classes`).then((response) => {
-      console.log(response.data);
-      this.setState({ classes: response.data });
+    dataService.getClasses((classes) => {
+      this.setState({ classes: classes });
     });
   }
 
