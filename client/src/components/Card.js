@@ -17,12 +17,13 @@ const Card = (props) => {
           data-holder-rendered="true"
         />
         <div className="card-body">
-          <p className="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
+          <ul className="card-text">
+            <li>Teacher Name: {props.oneClass.teacher.name}</li>
+            <li>Schedule: {props.oneClass.schedule}</li>
+            <li>Start Date: {props.oneClass.startDate}</li>
+          </ul>
           <div className="d-flex justify-content-between align-items-center">
-            <div className="btn-group">
+            {/* <div className="btn-group">
               <button
                 type="button"
                 className="btn btn-sm btn-outline-secondary"
@@ -41,8 +42,10 @@ const Card = (props) => {
               >
                 Delete
               </button>
-            </div>
-            <small className="text-muted">{props.oneClass.type}</small>
+            </div> */}
+            <small className="text-muted">
+              Class type: {props.oneClass.type}
+            </small>
           </div>
         </div>
       </div>

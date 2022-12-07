@@ -1,0 +1,18 @@
+input {
+  margin-bottom: 0.5rem;
+}
+
+.form-signin {
+  padding: 100px 0px 100px 0px;
+}
+
+.form-select {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}

@@ -38,12 +38,16 @@ class authService {
       });
   }
 
-  isAuthenticate() {
+  isAuthenticated() {
     return localStorage.getItem('token') !== null;
   }
 
   signout() {
     localStorage.removeItem('token');
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
   }
 }
 
