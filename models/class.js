@@ -22,8 +22,14 @@ const classSchema = new Schema({
     enum: ['music', 'censory', 'art'],
     required: [true, 'Class type must be required!!'],
   },
-  schedule: String,
-  startDate: String,
+  schedule: {
+    type: String,
+    required: [true, 'Schedule must be required!!'],
+  },
+  startDate: {
+    type: String,
+    required: [true, 'Start Date must be required!!'],
+  },
   teacher: teacherSchema,
   student: [studentSchema],
 });

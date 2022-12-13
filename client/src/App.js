@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Register from './components/Register';
 import CreateForm from './components/CreateForm';
 import ProtectedRoutes from './components/ProtectedRoutes';
+import EditForm from './components/EditForm';
 
 import './css/app.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/createForm" element={<CreateForm />} />
+              <Route path="/editForm/:classId" element={<EditForm />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

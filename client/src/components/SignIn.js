@@ -9,6 +9,8 @@ const SignIn = (props) => {
   //define state in this component using HOOKS!
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState('');
+  const [authErr, setAuthErr] = useState('');
 
   //use the hook provided by react router
   const navigate = useNavigate();
@@ -16,16 +18,20 @@ const SignIn = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault(); //prevent the form from doing a browser submit
 
-    authService.signin(
-      { email: email, password: password },
-      (signinSuccess) => {
-        if (signinSuccess) {
-          navigate('/');
-        } else {
-          console.log('UNSUCCESSFUL LOGIN');
-        }
+    setErrors('');
+    setAuthErr('');
+    authService.signin({ email: email, password: password }, (error) => {
+      if (!error) {
+        navigate('/');
+      } else if (error.status === 422) {
+        const errors = error.data.errors;
+        setErrors(errors);
+        console.log(error);
+      } else if (error.status === 401) {
+        console.log(error);
+        setAuthErr(error.data);
       }
-    );
+    });
   };
 
   return (
@@ -35,15 +41,17 @@ const SignIn = (props) => {
         Email address
       </label>
       <input
-        type="email"
+        type="text"
         id="inputEmail"
         name="email"
         onChange={(e) => setEmail(e.target.value)}
         className="form-control"
         placeholder="Email address"
-        required
         autoFocus
       />
+      {errors.email && (
+        <div className="alert alert-danger">{errors.email.message}</div>
+      )}
       <label htmlFor="inputPassword" className="sr-only">
         Password
       </label>
@@ -54,11 +62,14 @@ const SignIn = (props) => {
         onChange={(e) => setPassword(e.target.value)}
         className="form-control"
         placeholder="Password"
-        required
       />
+      {errors.password && (
+        <div className="alert alert-danger">{errors.password.message}</div>
+      )}
       <button className="btn btn-lg btn-primary btn-block" type="submit">
         Sign in
       </button>
+      {authErr && <div className="alert alert-danger">{authErr}</div>}
     </form>
   );
 };

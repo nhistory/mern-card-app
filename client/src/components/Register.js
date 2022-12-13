@@ -11,6 +11,7 @@ const Register = (props) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState('');
 
   //use the hook provided by react router
   const navigate = useNavigate();
@@ -25,11 +26,13 @@ const Register = (props) => {
         email: email,
         password: password,
       },
-      (registerSuccess) => {
-        if (registerSuccess) {
+      (error) => {
+        if (!error) {
           navigate('/');
         } else {
-          console.log('UNSUCCESSFUL REGISTER');
+          const errors = error.data.errors;
+          setErrors(errors);
+          console.log(errors);
         }
       }
     );
@@ -48,9 +51,11 @@ const Register = (props) => {
         onChange={(e) => setFirstName(e.target.value)}
         className="form-control"
         placeholder="First Name"
-        required
         autoFocus
       />
+      {errors.firstName && (
+        <div className="alert alert-danger">{errors.firstName.message}</div>
+      )}
       <label htmlFor="inputEmail" className="sr-only">
         Last Name
       </label>
@@ -61,20 +66,24 @@ const Register = (props) => {
         onChange={(e) => setLastName(e.target.value)}
         className="form-control"
         placeholder="Last Name"
-        required
       />
+      {errors.lastName && (
+        <div className="alert alert-danger">{errors.lastName.message}</div>
+      )}
       <label htmlFor="inputEmail" className="sr-only">
         Email address
       </label>
       <input
-        type="email"
+        type="text"
         id="inputEmail"
         name="email"
         onChange={(e) => setEmail(e.target.value)}
         className="form-control"
         placeholder="Email address"
-        required
       />
+      {errors.email && (
+        <div className="alert alert-danger">{errors.email.message}</div>
+      )}
       <label htmlFor="inputPassword" className="sr-only">
         Password
       </label>
@@ -85,8 +94,10 @@ const Register = (props) => {
         onChange={(e) => setPassword(e.target.value)}
         className="form-control"
         placeholder="Password"
-        required
       />
+      {errors.password && (
+        <div className="alert alert-danger">{errors.password.message}</div>
+      )}
       <button className="btn btn-lg btn-primary btn-block" type="submit">
         Sign up
       </button>

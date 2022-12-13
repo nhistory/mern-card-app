@@ -1,50 +1,57 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 
-var validateToken = require('../../middleware/validateToken')
+var validateToken = require('../../middleware/validateToken');
 // router.use(validateToken)
 
 // import the Class model
-const Class = require("../../models/class");
+const Class = require('../../models/class');
 
 // define endpoints for classes resource
 
 // GET ALL CLASSES
-router.get("/", (req, res) => {
-    // res.send('GET ALL SONGS ENDPOINT WAS REACHED')
-  
-    Class.find({}, (err, classes) => {
-      //handle if err occurred
-      if (err) {
-        console.log(err);
-        res.status(500).send("An error occurred");
-      }
-  
-      console.log(classes);
-      res.send(classes);
-    });
+router.get('/', (req, res) => {
+  // res.send('GET ALL SONGS ENDPOINT WAS REACHED')
+
+  Class.find({}, (err, classes) => {
+    //handle if err occurred
+    if (err) {
+      console.log(err);
+      res.status(500).send('An error occurred');
+    }
+
+    console.log(classes);
+    res.send(classes);
+  });
 });
 
 // GET ONE CLASS BY ID
-router.get("/:id", validateToken, (req, res) => {
-    // res.send(`GET ONE SONGS ENDPOINT WAS REACHED and the ID is ${req.params.id}`)
-  
-    Class.findById(req.params.id, (err, oneClass) => {
-      if (err) {
-        return res.status(400).send(`Error: ${err.message}`);
-      }
-  
-      if (!oneClass) {
-        return res.status(404).send();
-      }
-      res.send(oneClass);
-    });
+router.get('/:id', validateToken, (req, res) => {
+  // res.send(`GET ONE SONGS ENDPOINT WAS REACHED and the ID is ${req.params.id}`)
+
+  Class.findById(req.params.id, (err, oneClass) => {
+    if (err) {
+      return res.status(400).send(`Error: ${err.message}`);
+    }
+
+    if (!oneClass) {
+      return res.status(404).send();
+    }
+    res.send(oneClass);
+  });
 });
-  
+
 // CREATE CLASS
-router.post("/", (req, res) => {
-    // res.send(`CREATE SONGS ENDPOINT WAS REACHED`)
-  
+router.post('/', (req, res) => {
+  // res.send(`CREATE SONGS ENDPOINT WAS REACHED`)
+  const postClass = new Class(req.body);
+
+  postClass.validate((error) => {
+    if (error) {
+      //we have validation errors...respond with details
+      return res.status(422).send(error);
+    }
+
     Class.create(req.body, (err, savedClass) => {
       if (err) {
         return res.status(400).send(`Error: ${err.message}`);
@@ -52,36 +59,44 @@ router.post("/", (req, res) => {
       console.log(savedClass);
       res.status(201).send();
     });
+  });
 });
-  
+
 // UPDATE CLASS BY ID
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
+  const putClass = new Class(req.body);
+
+  putClass.validate((error) => {
+    if (error) {
+      //we have validation errors...respond with details
+      return res.status(422).send(error);
+    }
     Class.findByIdAndUpdate(req.params.id, req.body, (err, updatedClass) => {
-        if (err) {
-            return res.status(400).send(`Error: ${err.message}`);
-        }
-      
-          if (!updatedClass) {
-            return res.status(404).send();
-        }
-    
-        res.send(updatedClass);
+      if (err) {
+        return res.status(400).send(`Error: ${err.message}`);
+      }
+
+      if (!updatedClass) {
+        return res.status(404).send();
+      }
+
+      res.send(updatedClass);
     });
+  });
 });
-  
+
 // DELETE CLASS BY ID
-router.delete("/:id", (req, res) => {
-    Class.findByIdAndDelete(req.params.id, req.body, (err, deletedClass) => {
-        if (err) {
-            return res.status(400).send(`Error: ${err.message}`);
-        }
-      
-        if (!deletedClass) {
-            return res.status(404).send();
-        }
-        res.send(deletedClass)
-    })
+router.delete('/:id', (req, res) => {
+  Class.findByIdAndDelete(req.params.id, req.body, (err, deletedClass) => {
+    if (err) {
+      return res.status(400).send(`Error: ${err.message}`);
+    }
+
+    if (!deletedClass) {
+      return res.status(404).send();
+    }
+    res.send(deletedClass);
+  });
 });
-  
 
 module.exports = router;

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/createForm.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import dataService from '../services/dataService';
 
-const CreateForm = (props) => {
+const EditForm = (props) => {
   //define state in this component using HOOKS!
   const [type, setType] = useState('');
   const [schedule, setSchedule] = useState('');
@@ -13,11 +13,22 @@ const CreateForm = (props) => {
   //use the hook provided by react router
   const navigate = useNavigate();
 
+  const { classId } = useParams();
+  useEffect(() => {
+    dataService.getOneClass(classId, (oneClass) => {
+      //console.log(oneClass);
+      setType(oneClass.type);
+      setSchedule(oneClass.schedule);
+      setStartDate(oneClass.startDate);
+    });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault(); //prevent the form from doing a browser submit
 
     //console.log(type, schedule, startDate);
-    dataService.createClass(
+    dataService.updateClass(
+      classId,
       {
         type: type,
         schedule: schedule,
@@ -57,9 +68,7 @@ const CreateForm = (props) => {
 
   return (
     <form className="form-signin" onSubmit={handleSubmit}>
-      <h1 className="h3 mb-3 font-weight-normal text-center">
-        Enlist New Class
-      </h1>
+      <h1 className="h3 mb-3 font-weight-normal text-center">Edit Class</h1>
       <label htmlFor="inputType" className="form-label">
         Class Type
       </label>
@@ -94,7 +103,7 @@ const CreateForm = (props) => {
         name="schedule"
         onChange={(e) => setSchedule(e.target.value)}
         className="form-control"
-        placeholder="Schedule"
+        placeholder={schedule}
       />
       {errors.schedule && (
         <div className="alert alert-danger">{errors.schedule.message}</div>
@@ -108,17 +117,17 @@ const CreateForm = (props) => {
         name="startdate"
         onChange={(e) => setStartDate(e.target.value)}
         className="form-control"
-        placeholder="Start Date"
+        value={startDate}
       />
       {errors.startDate && (
         <div className="alert alert-danger">{errors.startDate.message}</div>
       )}
 
       <button className="btn btn-lg btn-primary btn-block" type="submit">
-        Create data
+        Edit data
       </button>
     </form>
   );
 };
 
-export default CreateForm;
+export default EditForm;

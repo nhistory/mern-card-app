@@ -10,12 +10,11 @@ class authService {
         if (response.status === 200) {
           //there should be a token ... store it
           localStorage.setItem('token', response.headers['x-auth-token']);
-          callback(true);
+          callback(null);
         }
       })
       .catch((error) => {
-        console.log(error.response);
-        callback(false);
+        callback(error.response);
       });
   }
 
@@ -29,12 +28,11 @@ class authService {
           //there should be a token ... store it
           localStorage.setItem('token', response.headers['x-auth-token']);
           //now redirect to the main page with our data
-          callback(true);
+          callback(null);
         }
       })
       .catch((error) => {
-        console.log(error.response);
-        callback(false);
+        callback(error.response);
       });
   }
 
